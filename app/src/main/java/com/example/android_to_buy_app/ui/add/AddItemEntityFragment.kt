@@ -1,17 +1,15 @@
-package com.example.android_to_buy_app.ui.home
+package com.example.android_to_buy_app.ui.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.android_to_buy_app.R
-import com.example.android_to_buy_app.databinding.FragmentHomeBinding
+import com.example.android_to_buy_app.databinding.FragmentAddItemEntityBinding
 import com.example.android_to_buy_app.ui.BaseFragment
-import java.util.*
 
-class HomeFragment: BaseFragment() {
+class AddItemEntityFragment: BaseFragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentAddItemEntityBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,20 +17,13 @@ class HomeFragment: BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentAddItemEntityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fab.setOnClickListener {
-            navigateViaNavGraph(R.id.action_homeFragment_to_addItemEntityFragment)
-        }
-
-        sharedViewModel.itemEntitiesLiveData.observe(viewLifecycleOwner) { itemEntityList ->
-            // todo
-        }
     }
 
     override fun onDestroy() {

@@ -9,5 +9,17 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android_to_buy_app.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_addItemEntityFragment"
+            app:destination="@id/addItemEntityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addItemEntityFragment"
+        android:name="com.example.android_to_buy_app.ui.add.AddItemEntityFragment"
+        android:label="AddItemEntityFragment"
+        tools:layout="@layout/fragment_add_item_entity"/>
+
 </navigation>
