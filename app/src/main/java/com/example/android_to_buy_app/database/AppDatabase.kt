@@ -27,5 +27,6 @@ abstract class AppDatabase: RoomDatabase() {
             return appDatabase!!
         }
     }
+
     abstract fun itemEntityDao(): ItemEntityDao
 }
