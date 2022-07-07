@@ -13,8 +13,8 @@ interface ItemEntityDao {
      suspend fun getAllItemEntity(): List<ItemEntity>
 
     @Insert
-    fun insert(vararg ItemEntity: ItemEntity)
+    suspend fun insert(vararg ItemEntity: ItemEntity)
 
     @Delete
-    fun delete(ItemEntity: ItemEntity)
+    suspend fun delete(ItemEntity: ItemEntity)
 }
