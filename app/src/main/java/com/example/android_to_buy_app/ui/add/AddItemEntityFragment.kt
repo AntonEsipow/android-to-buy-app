@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.android_to_buy_app.R
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.databinding.FragmentAddItemEntityBinding
@@ -31,6 +32,17 @@ class AddItemEntityFragment: BaseFragment() {
             saveItemEntityToTheDatabase()
         }
 
+        sharedViewModel.transactionCompletedLiveData.observe(viewLifecycleOwner) { complete ->
+            if (complete) {
+                refreshAddItemEntityScreen()
+            }
+        }
+        binding.titleEditText.requestFocus()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sharedViewModel.transactionCompletedLiveData.postValue(false)
     }
 
     override fun onDestroy() {
@@ -64,5 +76,13 @@ class AddItemEntityFragment: BaseFragment() {
         )
 
         sharedViewModel.insertItem(itemEntity)
+    }
+
+    private fun refreshAddItemEntityScreen() {
+        binding.titleEditText.text = null
+        binding.titleEditText.requestFocus()
+        binding.descriptionEditText.text = null
+        binding.radioGroup.check(R.id.radioButtonLow)
+        Toast.makeText(requireActivity(), "Note successfully added!", Toast.LENGTH_SHORT).show()
     }
 }

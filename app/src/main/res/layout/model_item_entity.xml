@@ -6,12 +6,15 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
     app:cardCornerRadius="4dp"
-    app:strokeWidth="1px">
+    app:strokeWidth="1dp"
+    app:cardElevation="3dp"
+    android:clipChildren="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="55dp">
+        android:minHeight="55dp"
+        android:clipChildren="false">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleTextView"
@@ -42,17 +45,6 @@
             app:layout_constraintStart_toStartOf="@id/titleTextView"
             app:layout_constraintTop_toBottomOf="@id/titleTextView"
             tools:text="Description will go here if we have it" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/deleteImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/priorityTextView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_delete_24" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/priorityTextView"
