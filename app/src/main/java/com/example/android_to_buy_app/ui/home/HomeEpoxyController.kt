@@ -1,5 +1,6 @@
 package com.example.android_to_buy_app.ui.home
 
+import android.content.res.ColorStateList
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -8,6 +9,7 @@ import com.dmp.tobuy.ui.epoxy.ViewBindingKotlinModel
 import com.example.android_to_buy_app.R
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.databinding.ModelItemEntityBinding
+import com.example.android_to_buy_app.ui.epoxy.EmptyStateEpoxyModel
 import com.example.android_to_buy_app.ui.epoxy.LoadingEpoxyModel
 
 class HomeEpoxyController(
@@ -37,7 +39,7 @@ class HomeEpoxyController(
         }
 
         if(itemEntityList.isEmpty()) {
-            // todo empty state
+            EmptyStateEpoxyModel().id("empty_state").addTo(this)
             return
         }
 
@@ -72,7 +74,9 @@ class HomeEpoxyController(
                 else -> R.color.purple_700
             }
 
-            priorityTextView.setBackgroundColor(ContextCompat.getColor(root.context, colorRes))
+            val color = ContextCompat.getColor(root.context, colorRes)
+            priorityTextView.setBackgroundColor(color)
+            root.setStrokeColor(ColorStateList.valueOf(color))
         }
     }
 }
