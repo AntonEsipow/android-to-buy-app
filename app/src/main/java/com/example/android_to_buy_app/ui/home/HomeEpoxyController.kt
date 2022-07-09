@@ -50,8 +50,7 @@ class HomeEpoxyController(
             if (item.priority != currentPriority) {
                 currentPriority = item.priority
                 val text = getHeaderTextForPriority(currentPriority)
-                val color = getColorFromPriority(currentPriority)
-                HeaderEpoxyModel(text, color).id(text).addTo(this)
+                HeaderEpoxyModel(text).id(text).addTo(this)
             }
             ItemEntityEpoxyModel(item, itemEntityInterface).id(item.id).addTo(this)
         }
@@ -62,15 +61,6 @@ class HomeEpoxyController(
             1 -> "Low"
             2 -> "Medium"
             else -> "High"
-        }
-    }
-
-    private fun getColorFromPriority(priority: Int): Int {
-        return when(priority) {
-            1 -> R.color.model_header_background_low
-            2 -> R.color.model_header_background_medium
-            3 -> R.color.model_header_background_high
-            else -> R.color.purple_700
         }
     }
 
@@ -99,7 +89,7 @@ class HomeEpoxyController(
                 1 -> android.R.color.holo_green_dark
                 2 -> android.R.color.holo_orange_dark
                 3 -> android.R.color.holo_red_dark
-                else -> R.color.purple_700
+                else -> R.color.blue_gray_700
             }
 
             val color = ContextCompat.getColor(root.context, colorRes)

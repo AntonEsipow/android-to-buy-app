@@ -8,12 +8,9 @@ import com.example.android_to_buy_app.databinding.ModelHeaderItemBinding
 
 data class HeaderEpoxyModel(
     val headerText: String,
-    val headerColorRes: Int
 ): ViewBindingKotlinModel<ModelHeaderItemBinding>(R.layout.model_header_item) {
 
     override fun ModelHeaderItemBinding.bind() {
         textView.text = headerText
-        val color = ContextCompat.getColor(root.context, headerColorRes)
-        textView.setBackgroundColor(color)
     }
 }
