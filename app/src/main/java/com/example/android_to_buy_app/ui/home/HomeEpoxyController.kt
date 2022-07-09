@@ -10,6 +10,7 @@ import com.example.android_to_buy_app.R
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.databinding.ModelItemEntityBinding
 import com.example.android_to_buy_app.ui.epoxy.EmptyStateEpoxyModel
+import com.example.android_to_buy_app.ui.epoxy.HeaderEpoxyModel
 import com.example.android_to_buy_app.ui.epoxy.LoadingEpoxyModel
 
 class HomeEpoxyController(
@@ -43,8 +44,33 @@ class HomeEpoxyController(
             return
         }
 
+        var currentPriority: Int = -1
+        itemEntityList.sortByDescending { it.priority }
         itemEntityList.forEach { item ->
+            if (item.priority != currentPriority) {
+                currentPriority = item.priority
+                val text = getHeaderTextForPriority(currentPriority)
+                val color = getColorFromPriority(currentPriority)
+                HeaderEpoxyModel(text, color).id(text).addTo(this)
+            }
             ItemEntityEpoxyModel(item, itemEntityInterface).id(item.id).addTo(this)
+        }
+    }
+
+    private fun getHeaderTextForPriority(currentPriority: Int): String {
+        return when(currentPriority) {
+            1 -> "Low"
+            2 -> "Medium"
+            else -> "High"
+        }
+    }
+
+    private fun getColorFromPriority(priority: Int): Int {
+        return when(priority) {
+            1 -> R.color.model_header_background_low
+            2 -> R.color.model_header_background_medium
+            3 -> R.color.model_header_background_high
+            else -> R.color.purple_700
         }
     }
 
@@ -52,6 +78,8 @@ class HomeEpoxyController(
         val itemEntity: ItemEntity,
         val itemEntityInterface: ItemEntityInterface
     ): ViewBindingKotlinModel<ModelItemEntityBinding>(R.layout.model_item_entity) {
+
+
 
         override fun ModelItemEntityBinding.bind() {
             titleTextView.text = itemEntity.title
