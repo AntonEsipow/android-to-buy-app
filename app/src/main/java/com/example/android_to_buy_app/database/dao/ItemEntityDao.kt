@@ -15,4 +15,7 @@ interface ItemEntityDao {
 
     @Delete
     suspend fun delete(ItemEntity: ItemEntity)
+
+    @Update
+    suspend fun update(ItemEntity: ItemEntity)
 }

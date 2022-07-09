@@ -40,4 +40,10 @@ class ToBuyViewModel: ViewModel() {
             repository.deleteItem(itemEntity)
         }
     }
+
+    fun updateItem(itemEntity: ItemEntity) {
+        viewModelScope.launch {
+            repository.updateItem(itemEntity)
+        }
+    }
 }
