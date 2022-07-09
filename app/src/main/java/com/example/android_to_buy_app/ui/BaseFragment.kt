@@ -2,6 +2,7 @@ package com.example.android_to_buy_app.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
 import com.example.android_to_buy_app.arch.ToBuyViewModel
 import com.example.android_to_buy_app.database.AppDatabase
 import java.lang.Appendable
@@ -23,6 +24,10 @@ abstract class BaseFragment: Fragment() {
 
     protected fun navigateViaNavGraph(actionId: Int) {
         mainActivity.navController.navigate(actionId)
+    }
+
+    protected fun navigateViaNavGraph(navDirections: NavDirections) {
+        mainActivity.navController.navigate(navDirections)
     }
     // endregion Navigation helper methods
 }

@@ -20,6 +20,13 @@
         android:id="@+id/addItemEntityFragment"
         android:name="com.example.android_to_buy_app.ui.add.AddItemEntityFragment"
         android:label="Add Item"
-        tools:layout="@layout/fragment_add_item_entity"/>
+        tools:layout="@layout/fragment_add_item_entity">
+
+        <argument
+            android:name="selectedItemEntityId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>
