@@ -1,6 +1,8 @@
 package com.example.android_to_buy_app.ui.home
 
+import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible

@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">android-to-buy-app</string>
+    <string name="app_name">ToBuy</string>
+    <string name="priority_mark">!</string>
+    <string name="no_items">No items!</string>
+    <string name="no_items_hint">Use the button below to add an item to your list</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description">Description (optional)</string>
+    // Priority
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    // Buttons
+    <string name="btn_save">Save</string>
+    <string name="btn_update">Update</string>
+    // Menu
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
 </resources>

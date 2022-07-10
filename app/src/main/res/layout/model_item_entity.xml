@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
+    android:clipChildren="false"
     app:cardCornerRadius="4dp"
-    app:strokeWidth="1px"
     app:cardElevation="3dp"
-    android:clipChildren="false">
+    app:strokeWidth="1px">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="55dp"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:minHeight="55dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleTextView"
@@ -24,7 +24,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
             app:layout_constraintEnd_toStartOf="@id/priorityTextView"
@@ -51,7 +51,7 @@
             android:layout_width="24dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="!"
+            android:text="@string/priority_mark"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"

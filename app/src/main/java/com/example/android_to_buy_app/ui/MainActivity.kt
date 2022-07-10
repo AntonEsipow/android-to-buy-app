@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.android_to_buy_app.R
 import com.example.android_to_buy_app.arch.ToBuyViewModel
 import com.example.android_to_buy_app.database.AppDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity: AppCompatActivity() {
 
@@ -26,12 +28,22 @@ class MainActivity: AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        // Define top-level Fragments
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.profileFragment))
+
+        // Setup top app bar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         val viewModel: ToBuyViewModel by viewModels()
         viewModel.init(AppDatabase.getDatabase(this))
+
+        // Setup bottom nav bar
+        setupWithNavController(
+            findViewById<BottomNavigationView>(R.id.bottom_nav_menu),
+            navHostFragment.navController
+        )
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
