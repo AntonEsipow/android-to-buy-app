@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToBuy</string>
+    <string name="app_name">ToDo</string>
     <string name="priority_mark">!</string>
     <string name="no_items">No items!</string>
     <string name="no_items_hint">Use the button below to add an item to your list</string>
