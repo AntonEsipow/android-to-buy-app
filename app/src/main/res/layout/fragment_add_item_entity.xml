@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
+            android:theme="@style/ToBuyOutlinedBoxDense"
             android:textColorHint="?attr/colorOnBackground"
             app:errorEnabled="true"
             app:hintTextColor="?attr/colorOnBackground"
@@ -43,6 +44,7 @@
             android:layout_marginTop="16dp"
             android:textColorHint="?attr/colorOnBackground"
             app:errorEnabled="true"
+            android:theme="@style/ToBuyOutlinedBoxDense"
             app:hintTextColor="?attr/colorOnBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextField">
