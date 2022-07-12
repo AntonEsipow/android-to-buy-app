@@ -1,19 +1,18 @@
 package com.example.android_to_buy_app.ui.home
 
-import android.content.Context
 import android.content.res.ColorStateList
-import android.content.res.Resources
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.airbnb.epoxy.EpoxyController
 import com.dmp.tobuy.ui.epoxy.ViewBindingKotlinModel
 import com.example.android_to_buy_app.R
+import com.example.android_to_buy_app.addHeaderModel
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.databinding.ModelItemEntityBinding
-import com.example.android_to_buy_app.ui.epoxy.EmptyStateEpoxyModel
-import com.example.android_to_buy_app.ui.epoxy.HeaderEpoxyModel
-import com.example.android_to_buy_app.ui.epoxy.LoadingEpoxyModel
+import com.example.android_to_buy_app.ui.epoxy.models.EmptyStateEpoxyModel
+import com.example.android_to_buy_app.ui.epoxy.models.HeaderEpoxyModel
+import com.example.android_to_buy_app.ui.epoxy.models.LoadingEpoxyModel
 
 class HomeEpoxyController(
     private val itemEntityInterface: ItemEntityInterface
@@ -51,8 +50,7 @@ class HomeEpoxyController(
         itemEntityList.forEach { item ->
             if (item.priority != currentPriority) {
                 currentPriority = item.priority
-                val text = getHeaderTextForPriority(currentPriority)
-                HeaderEpoxyModel(text).id(text).addTo(this)
+                addHeaderModel(getHeaderTextForPriority(currentPriority))
             }
             ItemEntityEpoxyModel(item, itemEntityInterface).id(item.id).addTo(this)
         }
@@ -70,8 +68,6 @@ class HomeEpoxyController(
         val itemEntity: ItemEntity,
         val itemEntityInterface: ItemEntityInterface
     ): ViewBindingKotlinModel<ModelItemEntityBinding>(R.layout.model_item_entity) {
-
-
 
         override fun ModelItemEntityBinding.bind() {
             titleTextView.text = itemEntity.title

@@ -1,4 +1,4 @@
-package com.example.android_to_buy_app.ui.epoxy
+package com.example.android_to_buy_app.ui.epoxy.models
 
 import android.content.res.ColorStateList
 import androidx.core.content.ContextCompat
@@ -12,5 +12,9 @@ data class HeaderEpoxyModel(
 
     override fun ModelHeaderItemBinding.bind() {
         textView.text = headerText
+    }
+
+    override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
+        return totalSpanCount
     }
 }

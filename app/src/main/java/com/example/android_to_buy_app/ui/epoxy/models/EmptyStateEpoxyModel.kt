@@ -1,4 +1,4 @@
-package com.example.android_to_buy_app.ui.epoxy
+package com.example.android_to_buy_app.ui.epoxy.models
 
 import com.dmp.tobuy.ui.epoxy.ViewBindingKotlinModel
 import com.example.android_to_buy_app.R
