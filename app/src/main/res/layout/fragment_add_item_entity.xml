@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/background"
@@ -9,7 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/titleTextField"
@@ -59,18 +62,56 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/categoryLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Category"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/descriptionTextField"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextField" />
+
+        <com.airbnb.epoxy.EpoxyRecyclerView
+            android:id="@+id/categoriesEpoxyRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            app:itemSpacing="12dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/categoryLabelTextView"
+            app:spanCount="2"
+            tools:listitem="@layout/model_category_item_selection" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/priorityLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/priority_label"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/categoryLabelTextView"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesEpoxyRecyclerView" />
+
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:checkedButton="@id/radioButtonLow"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextField">
+            app:layout_constraintTop_toBottomOf="@+id/priorityLabelTextView">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButtonLow"
@@ -106,7 +147,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/btn_save"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

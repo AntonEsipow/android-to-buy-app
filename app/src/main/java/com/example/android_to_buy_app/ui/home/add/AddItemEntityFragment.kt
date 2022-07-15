@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.android_to_buy_app.R
+import com.example.android_to_buy_app.database.entity.CategoryEntity
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.databinding.FragmentAddItemEntityBinding
 import com.example.android_to_buy_app.ui.BaseFragment
@@ -54,11 +55,15 @@ class AddItemEntityFragment: BaseFragment() {
         binding.titleEditText.requestFocus()
         // Setup screen if we are in edit mode
         setupSelectedItemEntity()
-    }
 
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
+        val categoryViewStateEpoxyController = CategoryViewStateEpoxyController { categoryId ->
+            sharedViewModel.onCategorySelected(categoryId)
+        }
+        binding.categoriesEpoxyRecyclerView.setController(categoryViewStateEpoxyController)
+        sharedViewModel.onCategorySelected(selectedItemEntity?.categoryId ?: CategoryEntity.DEFAULT_CATEGORY_ID, true)
+        sharedViewModel.categoriesViewStateLiveData.observe(viewLifecycleOwner) { viewState ->
+            categoryViewStateEpoxyController.viewState = viewState
+        }
     }
 
     private fun saveItemEntityToTheDatabase() {
@@ -79,12 +84,14 @@ class AddItemEntityFragment: BaseFragment() {
             R.id.radioButtonHigh -> 3
             else -> 0
         }
+        val itemCategoryId = sharedViewModel.categoriesViewStateLiveData.value?.getSelectedCategoryId() ?: return
 
         if(isInEditMode) {
             val itemEntity = selectedItemEntity!!.copy(
                 title = itemTitle,
                 description = itemDescription,
-                priority = itemPriority
+                priority = itemPriority,
+                categoryId = itemCategoryId
             )
             sharedViewModel.updateItem(itemEntity)
             return
@@ -96,7 +103,7 @@ class AddItemEntityFragment: BaseFragment() {
             description = itemDescription,
             priority = itemPriority,
             createdAt = System.currentTimeMillis(),
-            categoryId = "" // todo update later when we have categories in the app
+            categoryId = itemCategoryId
         )
 
         sharedViewModel.insertItem(itemEntity)
@@ -127,5 +134,10 @@ class AddItemEntityFragment: BaseFragment() {
             binding.saveButton.text = "Update"
             mainActivity.supportActionBar?.title = "Update item"
         }
+    }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
     }
 }
