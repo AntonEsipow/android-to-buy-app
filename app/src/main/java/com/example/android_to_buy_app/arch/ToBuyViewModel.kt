@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android_to_buy_app.database.AppDatabase
 import com.example.android_to_buy_app.database.entity.CategoryEntity
 import com.example.android_to_buy_app.database.entity.ItemEntity
+import com.example.android_to_buy_app.database.entity.ItemWithCategoryEntity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.Appendable
@@ -16,15 +17,23 @@ class ToBuyViewModel: ViewModel() {
 
     val itemEntitiesLiveData = MutableLiveData<List<ItemEntity>>()
     val categoryEntitiesLiveData = MutableLiveData<List<CategoryEntity>>()
+    val itemWithCategoryEntitiesLiveData = MutableLiveData<List<ItemWithCategoryEntity>>()
 
     val transactionCompletedLiveData = MutableLiveData<Event<Boolean>>()
 
     fun init(appDatabase: AppDatabase) {
         repository = ToBuyRepository(appDatabase)
 
+        // Initialize our Flow connectivity to the DB
         viewModelScope.launch {
             repository.getAllItems().collect { items ->
                 itemEntitiesLiveData.postValue(items)
+            }
+        }
+
+        viewModelScope.launch {
+            repository.getAllItemWithCategoryEntities().collect { items ->
+                itemWithCategoryEntitiesLiveData.postValue(items)
             }
         }
 

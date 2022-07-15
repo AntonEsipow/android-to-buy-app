@@ -3,6 +3,7 @@ package com.example.android_to_buy_app.arch
 import com.example.android_to_buy_app.database.AppDatabase
 import com.example.android_to_buy_app.database.entity.CategoryEntity
 import com.example.android_to_buy_app.database.entity.ItemEntity
+import com.example.android_to_buy_app.database.entity.ItemWithCategoryEntity
 import kotlinx.coroutines.flow.Flow
 
 class ToBuyRepository(
@@ -24,6 +25,10 @@ class ToBuyRepository(
 
     fun getAllItems(): Flow<List<ItemEntity>> {
         return appDatabase.itemEntityDao().getAllItemEntity()
+    }
+
+    fun getAllItemWithCategoryEntities(): Flow<List<ItemWithCategoryEntity>> {
+        return appDatabase.itemEntityDao().getAllItemWithCategoryEntities()
     }
     // endregion ItemEntity
 
