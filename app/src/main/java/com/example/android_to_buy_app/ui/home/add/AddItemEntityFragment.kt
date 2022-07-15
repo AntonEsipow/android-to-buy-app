@@ -1,4 +1,4 @@
-package com.example.android_to_buy_app.ui.add
+package com.example.android_to_buy_app.ui.home.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,13 +37,13 @@ class AddItemEntityFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showKeyboard()
         binding.saveButton.setOnClickListener {
             saveItemEntityToTheDatabase()
         }
 
-        sharedViewModel.transactionCompletedLiveData.observe(viewLifecycleOwner) { complete ->
-            if (complete) {
-
+        sharedViewModel.transactionCompletedLiveData.observe(viewLifecycleOwner) { event ->
+            event.getContent()?.let {
                 if (isInEditMode) {
                     navigateUp()
                     return@observe
@@ -54,11 +54,6 @@ class AddItemEntityFragment: BaseFragment() {
         binding.titleEditText.requestFocus()
         // Setup screen if we are in edit mode
         setupSelectedItemEntity()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        sharedViewModel.transactionCompletedLiveData.postValue(false)
     }
 
     override fun onDestroy() {

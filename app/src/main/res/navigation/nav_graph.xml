@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/addItemEntityFragment"
-        android:name="com.example.android_to_buy_app.ui.add.AddItemEntityFragment"
+        android:name="com.example.android_to_buy_app.ui.home.add.AddItemEntityFragment"
         android:label="Add Item"
         tools:layout="@layout/fragment_add_item_entity">
 
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/addCategoryFragment"
         tools:layout="@layout/fragment_add_category"
-        android:name="com.example.android_to_buy_app.ui.profile.AddCategoryFragment"
+        android:name="com.example.android_to_buy_app.ui.profile.add.AddCategoryFragment"
         android:label="Add Category" >
         <argument
             android:name="selectedCategoryEntityId"

@@ -1,4 +1,4 @@
-package com.example.android_to_buy_app.ui.profile
+package com.example.android_to_buy_app.ui.profile.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,21 +26,17 @@ class AddCategoryFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showKeyboard()
         binding.categoryNameEditText.requestFocus()
         binding.saveButton.setOnClickListener {
             saveCategoryToDatabase()
         }
 
-        sharedViewModel.transactionCompletedLiveData.observe(viewLifecycleOwner) { completed ->
-            if (completed) {
+        sharedViewModel.transactionCompletedLiveData.observe(viewLifecycleOwner) { event ->
+            event.getContent()?.let {
                 navigateUp()
             }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        sharedViewModel.transactionCompletedLiveData.postValue(false)
     }
 
     private fun saveCategoryToDatabase() {

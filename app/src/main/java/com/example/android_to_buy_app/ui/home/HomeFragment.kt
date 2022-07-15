@@ -30,6 +30,7 @@ class HomeFragment: BaseFragment(), ItemEntityInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        hideKeyboard()
         binding.fab.setOnClickListener {
             navigateViaNavGraph(R.id.action_homeFragment_to_addItemEntityFragment)
         }

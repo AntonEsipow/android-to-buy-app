@@ -1,5 +1,9 @@
 package com.example.android_to_buy_app.ui
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavDirections
@@ -30,4 +34,24 @@ abstract class BaseFragment: Fragment() {
         mainActivity.navController.navigate(navDirections)
     }
     // endregion Navigation helper methods
+
+    // region Keyboard methods
+    fun Fragment.showKeyboard() {
+        view?.let { activity?.showKeyboard(it) }
+    }
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    private fun Context.showKeyboard(view: View) {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+    // endregion Keyboard methods
 }
