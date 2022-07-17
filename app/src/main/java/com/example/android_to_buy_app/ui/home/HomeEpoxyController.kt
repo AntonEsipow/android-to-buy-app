@@ -9,6 +9,7 @@ import com.airbnb.epoxy.EpoxyController
 import com.dmp.tobuy.ui.epoxy.ViewBindingKotlinModel
 import com.example.android_to_buy_app.R
 import com.example.android_to_buy_app.addHeaderModel
+import com.example.android_to_buy_app.arch.ToBuyViewModel
 import com.example.android_to_buy_app.database.entity.ItemEntity
 import com.example.android_to_buy_app.database.entity.ItemWithCategoryEntity
 import com.example.android_to_buy_app.databinding.ModelItemEntityBinding
@@ -20,51 +21,34 @@ class HomeEpoxyController(
     private val itemEntityInterface: ItemEntityInterface
 ): EpoxyController() {
 
-    var isLoading: Boolean = true
+    var viewState: ToBuyViewModel.HomeViewState = ToBuyViewModel.HomeViewState(isLoading = true)
         set(value) {
             field = value
-            if(field) {
-                requestModelBuild()
-            }
-        }
-
-    var items: List<ItemWithCategoryEntity> = emptyList()
-        set(value) {
-            field = value
-            isLoading = false
             requestModelBuild()
         }
 
     override fun buildModels() {
 
-        if(isLoading) {
+        if(viewState.isLoading) {
             LoadingEpoxyModel().id("loading_state").addTo(this)
             return
         }
 
-        if(items.isEmpty()) {
+        if(viewState.dataList.isEmpty()) {
             EmptyStateEpoxyModel().id("empty_state").addTo(this)
             return
         }
 
-        var currentPriority: Int = -1
-        items.sortedByDescending { it.itemEntity.priority }
-            .forEach { item ->
-            if (item.itemEntity.priority != currentPriority) {
-                currentPriority = item.itemEntity.priority
-                addHeaderModel(getHeaderTextForPriority(currentPriority))
+        viewState.dataList.forEach { dataitem ->
+            if(dataitem.isHeader) {
+                addHeaderModel(dataitem.data as String)
+                return@forEach
             }
-            ItemEntityEpoxyModel(item, itemEntityInterface)
-                .id(item.itemEntity.id)
-                .addTo(this)
-        }
-    }
 
-    private fun getHeaderTextForPriority(currentPriority: Int): String {
-        return when(currentPriority) {
-            1 -> "Low"
-            2 -> "Medium"
-            else -> "High"
+            val itemWithCategoryEntity = dataitem.data as ItemWithCategoryEntity
+            ItemEntityEpoxyModel(itemWithCategoryEntity, itemEntityInterface)
+                .id(itemWithCategoryEntity.itemEntity.id)
+                .addTo(this)
         }
     }
 
