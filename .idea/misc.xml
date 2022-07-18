@@ -6,7 +6,9 @@
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/drawable/ic_delete_24.xml" value="0.2595" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/drawable/ic_home_24.xml" value="0.1755" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/drawable/ic_input_add_24.xml" value="0.1755" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/drawable/ic_sort_24.xml" value="0.1755" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/bottom_sheet_sort_order.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/epoxy_model_loading.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/fragment_add_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/fragment_add_item_entity.xml" value="0.25416666666666665" />
@@ -18,7 +20,9 @@
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/model_empty_state.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/model_header_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/model_item_entity.xml" value="0.4" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/layout/model_sort_order_item.xml" value="0.18841698841698842" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/menu/menu_bottom_app_bar.xml" value="0.24923076923076923" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-to-buy-app/app/src/main/res/menu/menu_home_fragment.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
