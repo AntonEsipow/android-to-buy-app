@@ -1,4 +1,4 @@
-package com.example.android_to_buy_app.ui.profile.add
+package com.example.android_to_buy_app.ui.customization.add
 
 import android.os.Bundle
 import android.view.LayoutInflater

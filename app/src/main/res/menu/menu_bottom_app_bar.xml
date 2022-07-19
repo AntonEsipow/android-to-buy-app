@@ -10,10 +10,10 @@
         android:title="@string/menu_home"/>
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/customizationFragment"
         android:enabled="true"
         app:showAsAction="always"
-        android:icon="@drawable/ic_person_24"
-        android:title="@string/menu_profile"/>
+        android:icon="@drawable/ic_customization_24"
+        android:title="@string/menu_customization"/>
 
 </menu>

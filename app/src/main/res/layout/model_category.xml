@@ -10,9 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="?attr/colorSurface"
+        android:background="?selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/colorPrimary"
+        app:strokeColor="?attr/colorOnSurface"
         app:strokeWidth="1dp">
 
         <androidx.appcompat.widget.AppCompatTextView

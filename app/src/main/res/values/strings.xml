@@ -17,4 +17,6 @@
     <string name="menu_profile">Profile</string>
     <string name="priority_label">Priority</string>
     <string name="sort">Sort</string>
+    <string name="menu_customization">Customization</string>
+    <string name="sort_order">Sort order</string>
 </resources>

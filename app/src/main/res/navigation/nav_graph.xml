@@ -17,9 +17,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.android_to_buy_app.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:id="@+id/customizationFragment"
+        android:name="com.example.android_to_buy_app.ui.customization.CustomizationFragment"
+        android:label="Customization"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_addCategoryFragment"
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/addCategoryFragment"
         tools:layout="@layout/fragment_add_category"
-        android:name="com.example.android_to_buy_app.ui.profile.add.AddCategoryFragment"
+        android:name="com.example.android_to_buy_app.ui.customization.add.AddCategoryFragment"
         android:label="Add Category" >
         <argument
             android:name="selectedCategoryEntityId"

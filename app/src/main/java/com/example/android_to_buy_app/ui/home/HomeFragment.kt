@@ -40,7 +40,7 @@ class HomeFragment: BaseFragment(), ItemEntityInterface {
         }
 
         val controller = HomeEpoxyController(this)
-        binding.epoxyRecyclerView.setController(controller)
+        binding.epoxyRecyclerView.setControllerAndBuildModels(controller)
 
         sharedViewModel.homeViewStateLiveData.observe(viewLifecycleOwner) { viewState ->
             controller.viewState = viewState
