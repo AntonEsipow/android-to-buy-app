@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_profileFragment_to_addCategoryFragment"
             app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_customizationFragment_to_customColorFragment"
+            app:destination="@id/customColorFragment" />
     </fragment>
 
     <fragment
@@ -49,6 +52,19 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customColorFragment"
+        tools:layout="@layout/fragment_custom_color_picker"
+        android:name="com.example.android_to_buy_app.ui.customization.color.CustomColorPickerFragment"
+        android:label="Custom color picker">
+        <argument
+            android:name="priorityName"
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
+
     </fragment>
 
 </navigation>

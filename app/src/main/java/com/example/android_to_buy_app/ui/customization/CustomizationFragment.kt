@@ -10,7 +10,7 @@ import com.example.android_to_buy_app.database.entity.CategoryEntity
 import com.example.android_to_buy_app.databinding.FragmentProfileBinding
 import com.example.android_to_buy_app.ui.BaseFragment
 
-class CustomizationFragment: BaseFragment(), CategoryEntityInterface {
+class CustomizationFragment: BaseFragment(), CustomizationInterface {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -47,6 +47,11 @@ class CustomizationFragment: BaseFragment(), CategoryEntityInterface {
 
     override fun onCategorySelected(categoryEntity: CategoryEntity) {
         Log.i("ProfileFragment", categoryEntity.toString())
+    }
+
+    override fun onPrioritySelected(priorityName: String) {
+        navigateViaNavGraph(CustomizationFragmentDirections
+            .actionCustomizationFragmentToCustomColorFragment(priorityName))
     }
 
     override fun onDestroy() {
